@@ -1,6 +1,8 @@
 "use client";
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+
 type Product = {
   id:string,
   thumbnail:string,
@@ -53,14 +55,16 @@ export default function page() {
             {products.length === 0 ? (<>No Products</>):(
               <>
                 {products.map((product) => (
-                  <div key={product.id} className='bg-white m-10'>
-                    <img src={product.thumbnail} width="100%" />
-                    <h3 className='font-bold'>{product.title}</h3>
-                    <p>${product.price}</p>
-                    <button className="bg-[#005EB8] hover:bg-[#004a91] text-white w-full py-2 rounded-lg transition">
-                      Add to Cart
-                    </button>
-                  </div>  
+                  <Link key={product.id} href={`products/${product.id}`}>
+                    <div className='bg-white m-10'>
+                      <img src={product.thumbnail} width="100%" />
+                      <h3 className='font-bold'>{product.title}</h3>
+                      <p>${product.price}</p>
+                      <button className="bg-[#005EB8] hover:bg-[#004a91] text-white w-full py-2 rounded-lg transition">
+                        Add to Cart
+                      </button>
+                    </div>  
+                  </Link>
                 ))}
               </>
             )}

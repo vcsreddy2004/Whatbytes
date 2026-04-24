@@ -1,5 +1,7 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+
 type Product = {
   id:string,
   thumbnail:string,
@@ -118,23 +120,18 @@ export default function Page() {
               {!isLoading? (
                 <>
                   {products.map((product) => (
-                    <div
-                      key={product.id}
-                      className="bg-white rounded-xl shadow-sm hover:shadow-md transition p-4"
-                    >
-                      <img
-                        src={product.thumbnail}
-                        alt={product.title}
-                        className="w-full h-40 object-cover rounded-lg mb-3"
-                      />
-                      <h3 className="font-semibold text-lg mb-1">
-                        {product.title}
-                      </h3>
-                      <p className="text-gray-600 mb-3">${product.price}</p>
-                      <button onClick={() => addTOCart(product)} className="bg-[#005EB8] hover:bg-[#004a91] hover:cursor-pointer text-white w-full py-2 rounded-lg transition">
-                        Add to Cart
-                      </button>
-                    </div>
+                    <Link key={product.id} href={`/products/${product.id}`}>
+                      <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition p-4">
+                        <img src={product.thumbnail} alt={product.title} className="w-full h-40 object-cover rounded-lg mb-3" />
+                        <h3 className="font-semibold text-lg mb-1">
+                          {product.title}
+                        </h3>
+                        <p className="text-gray-600 mb-3">${product.price}</p>
+                        <button onClick={() => addTOCart(product)} className="bg-[#005EB8] hover:bg-[#004a91] hover:cursor-pointer text-white w-full py-2 rounded-lg transition">
+                          Add to Cart
+                        </button>
+                      </div>
+                    </Link>
                   ))}
                 </>
               ):(
