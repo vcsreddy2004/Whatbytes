@@ -62,7 +62,7 @@ const Navbar = () => {
         {/* Cart */}
         <div className="hidden md:block">
           <Link href={"/cart"}>
-            <button className="flex items-center gap-2 px-6 py-2.5 bg-[#002A5A] hover:bg-[#001a35] rounded-xl font-medium">
+            <button className="flex items-center gap-2 px-6 py-2.5 bg-[#002A5A] hover:bg-[#001a35] hover:cursor-pointer rounded-xl font-medium">
               <ShoppingCart className="w-5 h-5" />
               <span>Cart</span>
             </button>
@@ -90,7 +90,7 @@ const Navbar = () => {
             />
           </div>
           <Link href={"/cart"}>
-            <button className="flex items-center justify-center gap-3 w-full py-4 bg-[#002A5A] rounded-xl font-semibold">
+            <button className="flex items-center justify-center gap-3 w-full py-4 bg-[#002A5A] hover:cursor-pointer rounded-xl font-semibold">
               <ShoppingCart className="w-6 h-6" />
               <span>View Cart</span>
             </button>
